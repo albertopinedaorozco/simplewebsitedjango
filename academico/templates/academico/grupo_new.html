@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <h2>Registrar nuevo grupo</h2>
+    </hr>
+    <form action="" method="POST" >
+        
+                {% csrf_token %}
+                <div class='form-group'>
+                    {{ form|crispy }}
+                </div>
+     
+
+    </hr>
+        <button class="btn btn-success"> Guardar</button>
+    </form>
+
+{% endblock content %}

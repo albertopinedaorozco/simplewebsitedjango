@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h3>Listado de grupos</h3>
+    <ul>
+        {% for grupo in object_list %}
+            <li><a href="{% url 'grupo_detail' grupo.pk %}">{{ grupo }}</a></li>
+        {% endfor %}
+    </ul>
+
+   
+
+{% block js %}
+ 
+{% endblock js %}
+
+{% endblock content %}

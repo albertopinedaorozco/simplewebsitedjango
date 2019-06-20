@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h3>Modificando al docente  {{ object.apellidos }}, {{ object.nombre }}</h3>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button class="btn btn-success">Guardar</button>
+    </form>
+    
+
+{% endblock content %}

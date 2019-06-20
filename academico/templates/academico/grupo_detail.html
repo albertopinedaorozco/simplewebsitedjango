@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h3>Información del grupo:</h3>
+    <p>Nombre: {{ object.codigo}}</p>
+    <p>Nombre: {{ object.docente }}</p>
+    <p>Nombre: {{ object.asignatura }}</p>
+
+
+   <a href="{% url 'grupo_list' %}">Regresar al listado de grupos</a>
+
+
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h2>Confirmación de borrado</h2>
+    </hr>
+
+        <form method="post">
+            {% csrf_token %}
+            <p>¿ Esta seguro que desea eliminar la asignatura {{ object.nombre }} ?</p>
+          
+            <input type="submit"> Borrar</button>
+        </form>
+   
+      
+        <a href="{% url 'asignatura_list' %}">Volver a listado de asignaturas</a>
+  
+{% endblock content %}

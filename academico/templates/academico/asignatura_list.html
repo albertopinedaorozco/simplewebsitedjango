@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h3>Listado de asignaturas</h3>
+    <ul>
+        {% for asignatura in object_list %}
+            <li><a href="{% url 'asignatura_detail' asignatura.pk %}">{{ asignatura }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'asignatura_new' %}">Agregar nueva asignatura</a></p>
+
+{% block js %}
+ 
+{% endblock js %}
+
+{% endblock content %}

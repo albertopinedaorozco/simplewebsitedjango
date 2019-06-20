@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <h3>Registrar asignatura</h3>
+    <div>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            
+            </hr>
+            <button class="btn btn-success"> Guardar</button>
+        </form>
+
+        <a href="{% url 'asignatura_list' %}">Lista asignaturas</a>
+
+    </div>
+
+   
+{% block js %}
+ 
+{% endblock js %}
+
+{% endblock content %}

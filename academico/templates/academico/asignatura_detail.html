@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h3>Información de la asignatura:</h3>
+    <p>Nombre: {{ object.nombre}}</p>
+    <p>Nombre: {{ object.descripcion }}</p>
+
+
+    <a href="{% url 'asignatura_delete' object.pk %}">Borrar asignatura</a> | 
+    <a href="{% url 'asignatura_list' %}">regresar a listado de asignaturas</a>
+
+
+{% endblock content %}

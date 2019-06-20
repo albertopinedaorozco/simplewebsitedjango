@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <p>Usuario: {{ user.username }}</p>
+    <ul>
+		{% for docente in object_list %}
+		<card>
+				{% if docente.foto is None %}
+					<li><img src="{% static 'media/noimage.png' %}" alt="" width="100px" height="100px"></li>
+				{% else %}
+					<li><img src="{{ docente.foto }}" alt="" width="100px" height="100px"></li>
+				{% endif %}
+
+				<li><a href="{% url 'docente_detail' docente.pk %}">{{ docente }}</a></li>
+		</card>
+            
+        {% endfor %}
+    </ul>
+
+    <h2>Docentes vs grupos</h2>
+
+    <div style="width: 250px; height: 250px;">
+            <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    
+
+ {% block js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+    <script>
+           
+            var ctx = document.getElementById("myChart").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                       labels: JSON.parse('{{ empleados_descripcion|safe }}'), //[{{ empleados_descripcion }}]  //["Red", "Blue", "Yellow"],
+			        datasets: [{
+			            label: 'Datos de docentes',
+			            data: JSON.parse('{{ empleados_valores|safe }}'), //[12, 19, 3, 5],
+			            backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			            ],
+			            borderColor: [
+			                'rgba(255,99,132,1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                 'rgba(255,99,132,1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                'rgba(255,99,132,1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                 'rgba(255,99,132,1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			            ],
+			            borderWidth: 1
+			        }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });   
+    
+    </script>
+{% endblock js %}
+
+{% endblock content %}

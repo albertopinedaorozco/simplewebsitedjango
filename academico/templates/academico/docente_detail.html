@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h3>Docente  {{ object.apellidos }}, {{ object.nombre }}</h3>
+    </hr>
+    <p>Apellidos: {{ object.email }}</p>
+
+    <a href="{% url 'docente_edit' object.pk %}"> Editar a {{ object.nombre }}</a>|
+    <a href="{% url 'docentes_list' %}"> Lista de docentes</a>
+
+{% endblock content %}
